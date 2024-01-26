@@ -806,7 +806,7 @@
             <div>
                 <button id="get-share-link"
                         class="active:scale-[0.8] active p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 ">
-                    Получить ссылку доступа
+                    Get link
                 </button>
             </div>
         </div>
@@ -823,7 +823,7 @@
 <script type="text/javascript">
     document.getElementById("get-share-link").addEventListener('click', async () => {
         let link = document.getElementById('link-content');
-        await fetch('{{ env('APP_URL')}}:8000' + '/api/generate-share-link').then(response => response.text())
+        await fetch('{{ env('APP_URL')}}:{{ env('APP_PORT')}}' + '/api/generate-share-link').then(response => response.text())
             .then(data => {
                 link.innerHTML = data.slice(0, 50) + '...';
                 link.setAttribute('href', data)
